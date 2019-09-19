@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Smoke Piggy</title>
+	<link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body {font-size: 10vw; font-family: 'Righteous'; text-align: center;}
+		.cont {width: 90%; margin: 0 auto; padding: 2vw; display: flex; flex-direction: column; justify-content: center; align-items: center}
+		.trigger {width: 50vw; height: 20%; font-size: 10vw; font-family: inherit; background-image: linear-gradient(to bottom, #666, #aca); border-radius: 150px;}
+		.field {background-image: linear-gradient(to bottom, #666, #f0f);}
+		.field p {margin: 0; padding: 1vw;}
+	</style>
+</head>
+<body>
+	<div class="cont">
+		<button class="trigger">Click</button>
+		<div>			
+			<div class="field"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var minCost = 90;
+		var maxCost = 135;
+
+		var trigger = document.querySelector('.trigger');
+		var field = document.querySelector('.field');
+
+
+		function getRandomCost (minCost, maxCost) {
+			var rand = minCost + Math.random() * (maxCost + 1 - minCost);
+		    rand = Math.floor(rand);		    
+		    return rand;
+		}		
+
+		trigger.addEventListener('click', function() {
+			var chance = (getRandomCost(0, 100));
+			
+			
+			if (chance < 70) {
+				field.innerHTML = '<p>Put in a piggy bank</p>' + getRandomCost(minCost, maxCost) + ' ₽';
+			}
+			
+			else if (chance < 85) {
+				field.innerHTML = '<p>Put in a piggy bank</p>' + getRandomCost(minCost, maxCost) * 2 + ' ₽';
+			}			
+			
+			else if (chance <= 100) {
+				field.innerHTML = '<p>You\'re very economy person:)</p>' ;
+			}
+			
+			else {
+				field.nnerHTML = '<p>Fuck you!</p>' ;
+			}			
+		
+			trigger.style = 'display: none';
+			console.log(chance);
+			console.log(getRandomCost(minCost, maxCost));			
+		});
+
+
+	</script>
+</body>
+</html>
